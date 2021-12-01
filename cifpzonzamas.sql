@@ -234,52 +234,52 @@ INSERT INTO cursos_ciclos (curso, id_tutor, id_ciclo) VALUES (2, 11, 3);
 INSERT INTO cursos_ciclos (curso, id_tutor, id_ciclo) VALUES (1, 13, 4);
 INSERT INTO cursos_ciclos (curso, id_tutor, id_ciclo) VALUES (2, 15, 4); 
 
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Entornos de desarrollo', 'ETS', 1, 1);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Formación y orientación laboral', 'FOL', 1, 2);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Lenguajes de marcas y sistemas de gestión de información', 'LND', 1, 3);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Bases de datos', 'BAE', 1, 1);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Sistemas informáticos', 'SSF', 1, 4);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Programación', 'PRO', 1, 3); /*6*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Empresa e iniciativa emprendedora', 'EMR', 2, 5);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Despliegue de aplicaciones web', 'DPL', 2, 1);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Diseño de interfaces web', 'DOR', 2, 6);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Desarrollo web en entorno cliente', 'DEW', 2, 4);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Desarrollo web en entorno servidor', 'DSW', 2, 7); /*11*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Lengua extranjera (Inglés)', 'LNT', 3, 8);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Fundamentos de hardware','FUW', 3, 4);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Formación y orientación laboral','FOL', 3, 2);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Lenguajes de marcas y sistemas de gestión de información','LND', 3, 3);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Gestión de bases de datos','GTB', 3, 9);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Planificación y administración de redes','PNI', 3, 9);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Implantación de sistemas operativos','IDP', 3, 10); /*18*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Administración de sistemas gestores de bases de datos','ADE', 4, 3);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Empresa e iniciativa emprendedora','EMR', 4, 2);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Servicios de red e internet','SRD', 4, 11);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Administración de sistemas operativos','ADD', 4, 10);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Seguridad y alta disponibilidad','SGY', 4, 12);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Implantación de aplicaciones web','IMW', 4, 7); /*24*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Formación y orientación laboral','FOL', 5, 13);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Sistemas operativos monopuesto','SSV', 5, 14);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Redes locales','RDE', 5, 9);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Montaje y mantenimiento de equipo','MJE', 5, 6);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Aplicaciones ofimáticas','AIF', 5, 14);/*29*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Seguridad informática','SEG', 6, 15); 
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Servicios en red','SER', 6, 16);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Aplicaciones web','APW', 6, 17);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Sistemas operativos en red','SOR', 6, 14);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Empresa e iniciativa emprendedora','EMR', 6, 14); /*34*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Entornos de desarrollo','ETS', 7, 1); 
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Formación y orientación laboral','FOL', 7, 2);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Lenguajes de marcas y sistemas de gestión de información','LND', 7, 3);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Bases de datos', 'BAE', 7, 1);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Sistemas informáticos', 'SSF', 7, 4);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Programación','PRO', 7, 3); /*40*/
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Empresa e iniciativa emprendedora','EMR', 8, 5);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Acceso a datos','ADD', 8, 1);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Desarrollo de interfaces','DIT', 8, 6);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Programación multimedia y dispositivos móviles','PMD', 8, 4);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Programación de servicios y procesos','PSP', 8, 7);
-INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_profesor) VALUES ('Sistemas de gestión empresarial','SGE', 8, 5); /*46*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Entornos de desarrollo', 'ETS', 1, 1);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Formación y orientación laboral', 'FOL', 1, 2);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Lenguajes de marcas y sistemas de gestión de información', 'LND', 1, 3);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Bases de datos', 'BAE', 1, 1);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Sistemas informáticos', 'SSF', 1, 4);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Programación', 'PRO', 1, 3); /*6*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Empresa e iniciativa emprendedora', 'EMR', 2, 5);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Despliegue de aplicaciones web', 'DPL', 2, 1);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Diseño de interfaces web', 'DOR', 2, 6);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Desarrollo web en entorno cliente', 'DEW', 2, 4);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Desarrollo web en entorno servidor', 'DSW', 2, 7); /*11*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Lengua extranjera (Inglés)', 'LNT', 3, 8);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Fundamentos de hardware','FUW', 3, 4);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Formación y orientación laboral','FOL', 3, 2);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Lenguajes de marcas y sistemas de gestión de información','LND', 3, 3);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Gestión de bases de datos','GTB', 3, 9);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Planificación y administración de redes','PNI', 3, 9);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Implantación de sistemas operativos','IDP', 3, 10); /*18*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Administración de sistemas gestores de bases de datos','ADE', 4, 3);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Empresa e iniciativa emprendedora','EMR', 4, 2);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Servicios de red e internet','SRD', 4, 11);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Administración de sistemas operativos','ADD', 4, 10);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Seguridad y alta disponibilidad','SGY', 4, 12);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Implantación de aplicaciones web','IMW', 4, 7); /*24*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Formación y orientación laboral','FOL', 5, 13);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Sistemas operativos monopuesto','SSV', 5, 14);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Redes locales','RDE', 5, 9);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Montaje y mantenimiento de equipo','MJE', 5, 6);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Aplicaciones ofimáticas','AIF', 5, 14);/*29*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Seguridad informática','SEG', 6, 15); 
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Servicios en red','SER', 6, 16);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Aplicaciones web','APW', 6, 17);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Sistemas operativos en red','SOR', 6, 14);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Empresa e iniciativa emprendedora','EMR', 6, 14); /*34*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Entornos de desarrollo','ETS', 7, 1); 
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Formación y orientación laboral','FOL', 7, 2);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Lenguajes de marcas y sistemas de gestión de información','LND', 7, 3);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Bases de datos', 'BAE', 7, 1);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Sistemas informáticos', 'SSF', 7, 4);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Programación','PRO', 7, 3); /*40*/
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Empresa e iniciativa emprendedora','EMR', 8, 5);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Acceso a datos','ADD', 8, 1);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Desarrollo de interfaces','DIT', 8, 6);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Programación multimedia y dispositivos móviles','PMD', 8, 4);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Programación de servicios y procesos','PSP', 8, 7);
+INSERT INTO modulos (nombre, siglas, id_curso_ciclo, id_prof) VALUES ('Sistemas de gestión empresarial','SGE', 8, 5); /*46*/
 
 
 insert into alumnos (nombre, apellido1, apellido2, fecha_nacimiento, email, telefono, sexo, pais, repetidor, id_curso_ciclo) values ('Mayne', 'Matley', 'Somner', '19830723', 'msomner1@ted.com', '6473156189', 'M', 'CN', false, 5);
