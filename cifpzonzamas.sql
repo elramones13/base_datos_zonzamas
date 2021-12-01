@@ -7,17 +7,7 @@ DROP RULE actu_cursos_ciclos6 on alumnos;
 DROP RULE actu_cursos_ciclos7 on alumnos;
 DROP RULE actu_cursos_ciclos8 on alumnos;
 
-DROP RULE insert_alum on alumnos;
-DROP RULE update_alum on alumnos;
-DROP RULE delete_alum on alumnos;
 
-DROP RULE insert_prof on alumnos;
-DROP RULE insert_prof on alumnos;
-DROP RULE insert_prof on alumnos;
-
-DROP RULE insert_mod on alumnos;
-DROP RULE insert_mod on alumnos;
-DROP RULE insert_mod on alumnos;
 
 
 DROP TABLE alumnos_modulos CASCADE;
@@ -472,8 +462,20 @@ insert into alumnos (nombre, apellido1, apellido2, fecha_nacimiento, email, tele
 insert into alumnos (nombre, apellido1, apellido2, fecha_nacimiento, email, telefono, sexo, pais, repetidor, id_curso_ciclo) values ('Alfreda', 'Ghidoni', 'Cominello', '19980419', 'acominello6m@hexun.com', '4989933602', 'F', 'ID', false, 3);
 insert into alumnos (nombre, apellido1, apellido2, fecha_nacimiento, email, telefono, sexo, pais, repetidor, id_curso_ciclo) values ('Antonius', 'Napolione', 'McCallion', '19851123', 'amccallion6n@nydailynews.com', '8138061277', 'M', 'CN', true, 6);
 
-
 UPDATE alumnos SET id_copy = id;
+
+
+DROP RULE insert_alum on alumnos;
+DROP RULE update_alum on alumnos;
+DROP RULE delete_alum on alumnos;
+
+DROP RULE insert_prof on alumnos;
+DROP RULE insert_prof on alumnos;
+DROP RULE insert_prof on alumnos;
+
+DROP RULE insert_mod on alumnos;
+DROP RULE insert_mod on alumnos;
+DROP RULE insert_mod on alumnos;
 /* ==================================== RULES PARA LOGS DE ALUMNOS ==================================== */
 CREATE OR REPLACE RULE insert_alum_zonzamas AS 
 ON INSERT TO alumnos DO ALSO 
