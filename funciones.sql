@@ -1,3 +1,5 @@
+drop function contador_alumnos;
+
 create function contador_alumnos(
     id integer
 ) returns bigint
