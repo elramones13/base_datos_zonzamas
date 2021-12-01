@@ -1,33 +1,35 @@
 DROP RULE actu_cursos_ciclos1 on alumnos;
-
 DROP RULE actu_cursos_ciclos2 on alumnos;
-
 DROP RULE actu_cursos_ciclos3 on alumnos;
-
 DROP RULE actu_cursos_ciclos4 on alumnos;
-
 DROP RULE actu_cursos_ciclos5 on alumnos;
-
 DROP RULE actu_cursos_ciclos6 on alumnos;
-
 DROP RULE actu_cursos_ciclos7 on alumnos;
-
 DROP RULE actu_cursos_ciclos8 on alumnos;
 
+DROP RULE insert_alum on alumnos;
+DROP RULE update_alum on alumnos;
+DROP RULE delete_alum on alumnos;
+
+DROP RULE insert_prof on alumnos;
+DROP RULE insert_prof on alumnos;
+DROP RULE insert_prof on alumnos;
+
+DROP RULE insert_mod on alumnos;
+DROP RULE insert_mod on alumnos;
+DROP RULE insert_mod on alumnos;
+
+
 DROP TABLE alumnos_modulos CASCADE;
-
 DROP TABLE alumnos CASCADE;
-
 DROP TABLE modulos CASCADE;
-
 DROP TABLE cursos_ciclos CASCADE;
-
 DROP TABLE profesores CASCADE;
-
 DROP TABLE personas CASCADE;
-
 DROP TABLE ciclos CASCADE;
-
+DROP TABLE log_alumnos CASCADE;
+DROP TABLE log_profesores CASCADE;
+DROP TABLE log_modulos CASCADE;
 
 CREATE TABLE ciclos (
     id serial PRIMARY KEY,
@@ -49,7 +51,6 @@ CREATE TABLE personas(
     id_copy INT
 );
 
-
 CREATE TABLE profesores(
     id_profesor serial PRIMARY KEY
 )INHERITS(personas);
@@ -62,7 +63,7 @@ CREATE TABLE cursos_ciclos(
 );
 
 CREATE TABLE modulos(
-    id serial PRIMARY KEY,
+    id_modulo serial PRIMARY KEY,
     nombre VARCHAR(60),
     siglas VARCHAR(3),
     id_curso_ciclo int REFERENCES cursos_ciclos(id) ON DELETE CASCADE ON UPDATE CASCADE,
@@ -81,6 +82,99 @@ CREATE TABLE alumnos_modulos(
     id_modulo int 
 );
 
+CREATE TABLE log_alumnos (
+    id serial primary key,
+    hora date DEFAULT CURRENT_DATE,
+    accion varchar(80),
+    id_alumno int,
+    repetidor bool,
+    id_curso_ciclo int,
+    nombre varchar(80),
+    apellido1 varchar(80),
+    apellido2 varchar(80),
+    fecha_nacimiento date,
+    email varchar(80),
+    telefono varchar(80), 
+    sexo char,
+    pais varchar(80)
+);
+
+CREATE TABLE log_profesores (
+    id serial primary key,
+    hora date DEFAULT CURRENT_DATE,
+    accion varchar(80),
+    id_alumno int,
+    nombre varchar(80),
+    apellido1 varchar(80),
+    apellido2 varchar(80),
+    fecha_nacimiento date,
+    email varchar(80),
+    telefono varchar(80), 
+    sexo char,
+    pais varchar(80)
+);
+
+CREATE TABLE log_modulos (
+    id serial primary key,
+    hora date DEFAULT CURRENT_DATE,
+    accion varchar(80),
+    nombre varchar(80),
+    siglas VARCHAR(3),
+    id_curso_ciclo int,
+    id_profesor int
+);
+
+/* ==================================== RULES PARA LOGS DE ALUMNOS ==================================== */
+CREATE OR REPLACE RULE insert_alum_zonzamas AS 
+ON INSERT TO alumnos DO ALSO 
+INSERT INTO log_alumnos (accion,id_alumno,repetidor,id_curso_ciclo,nombre,apellido1,apellido2,fecha_nacimiento,email,telefono,sexo,pais) 
+VALUES ('INSERT',NEW.id_alumnos,NEW.repetidor,NEW.id_curso_ciclo,NEW.nombre,NEW.apellido1,NEW.apellido2,NEW.fecha_nacimiento,NEW.email,NEW.telefono,NEW.sexo,NEW.pais);
+
+CREATE OR REPLACE RULE update_alum_zonzamas AS 
+ON UPDATE TO alumnos DO ALSO 
+INSERT INTO log_alumnos (accion,id_alumno,repetidor,id_curso_ciclo,nombre,apellido1,apellido2,fecha_nacimiento,email,telefono,sexo,pais) 
+VALUES ('UPDATE',NEW.id_alumnos,NEW.repetidor,NEW.id_curso_ciclo,NEW.nombre,NEW.apellido1,NEW.apellido2,NEW.fecha_nacimiento,NEW.email,NEW.telefono,NEW.sexo,NEW.pais);
+
+CREATE OR REPLACE RULE delete_alum_zonzamas AS 
+ON DELETE TO alumnos DO ALSO 
+INSERT INTO log_alumnos (accion,id_alumno,repetidor,id_curso_ciclo,nombre,apellido1,apellido2,fecha_nacimiento,email,telefono,sexo,pais) 
+VALUES ('DELETE',OLD.id_alumnos,OLD.repetidor,OLD.id_curso_ciclo,OLD.nombre,OLD.apellido1,OLD.apellido2,OLD.fecha_nacimiento,OLD.email,OLD.telefono,OLD.sexo,OLD.pais);
+/* ======================================================================================================= */
+
+/* ==================================== RULES PARA LOGS DE PROFESORES ==================================== */
+CREATE OR REPLACE RULE insert_prof_zonzamas AS 
+ON INSERT TO profesores DO ALSO 
+INSERT INTO log_profesores (accion,id_alumno,nombre,apellido1,apellido2,fecha_nacimiento,email,telefono,sexo,pais) 
+VALUES ('INSERT',NEW.id_profesor,NEW.nombre,NEW.apellido1,NEW.apellido2,NEW.fecha_nacimiento,NEW.email,NEW.telefono,NEW.sexo,NEW.pais);
+
+CREATE OR REPLACE RULE update_prof_zonzamas AS 
+ON UPDATE TO profesores DO ALSO 
+INSERT INTO log_profesores (accion,id_alumno,nombre,apellido1,apellido2,fecha_nacimiento,email,telefono,sexo,pais) 
+VALUES ('UPDATE',NEW.id_profesor,NEW.nombre,NEW.apellido1,NEW.apellido2,NEW.fecha_nacimiento,NEW.email,NEW.telefono,NEW.sexo,NEW.pais);
+
+CREATE OR REPLACE RULE delete_prof_zonzamas AS 
+ON DELETE TO profesores DO ALSO 
+INSERT INTO log_profesores (accion,id_alumno,nombre,apellido1,apellido2,fecha_nacimiento,email,telefono,sexo,pais) 
+VALUES ('DELETE',OLD.id_profesor,OLD.nombre,OLD.apellido1,OLD.apellido2,OLD.fecha_nacimiento,OLD.email,OLD.telefono,OLD.sexo,OLD.pais);
+/* ======================================================================================================= */
+
+/* ==================================== RULES PARA LOGS DE MODULOS ==================================== */
+CREATE OR REPLACE RULE insert_mod_zonzamas AS 
+ON INSERT TO modulos DO ALSO 
+INSERT INTO log_modulos (accion,nombre,siglas,id_curso_ciclo,id_profesor) 
+VALUES ('INSERT',NEW.nombre,NEW.siglas,NEW.id_curso_ciclo,NEW.id_profesor);
+
+CREATE OR REPLACE RULE update_mod_zonzamas AS 
+ON UPDATE TO modulos DO ALSO 
+INSERT INTO log_modulos (accion,nombre,siglas,id_curso_ciclo, id_profesor) 
+VALUES ('UPDATE',NEW.nombre,NEW.siglas,NEW.id_curso_ciclo,NEW.id_profesor);
+
+CREATE OR REPLACE RULE delete_mod_zonzamas AS 
+ON DELETE TO modulos DO ALSO 
+INSERT INTO log_modulos (accion,nombre,siglas, id_curso_ciclo, id_profesor) 
+VALUES ('DELETE',OLD.nombre,OLD.siglas,OLD.id_curso_ciclo,OLD.id_profesor);
+/* ======================================================================================================= */
+
 CREATE OR REPLACE RULE actu_cursos_ciclos1 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 1  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 1), (NEW.id_copy, 2), (NEW.id_copy, 3), (NEW.id_copy, 4), (NEW.id_copy, 5), (NEW.id_copy, 6);
 CREATE OR REPLACE RULE actu_cursos_ciclos2 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 2  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 7), (NEW.id_copy, 8), (NEW.id_copy, 9), (NEW.id_copy, 10), (NEW.id_copy, 11);
 CREATE OR REPLACE RULE actu_cursos_ciclos3 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 3  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 12), (NEW.id_copy, 13), (NEW.id_copy, 14), (NEW.id_copy, 15), (NEW.id_copy, 16), (NEW.id_copy, 17), (NEW.id_copy, 18);
@@ -89,7 +183,7 @@ CREATE OR REPLACE RULE actu_cursos_ciclos5 AS ON UPDATE TO alumnos where NEW.id_
 CREATE OR REPLACE RULE actu_cursos_ciclos6 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 6  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 30), (NEW.id_copy, 31), (NEW.id_copy, 32), (NEW.id_copy, 33), (NEW.id_copy, 34);
 CREATE OR REPLACE RULE actu_cursos_ciclos7 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 7  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 35), (NEW.id_copy, 36), (NEW.id_copy, 37), (NEW.id_copy, 38), (NEW.id_copy, 39), (NEW.id_copy, 40);
 CREATE OR REPLACE RULE actu_cursos_ciclos8 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 8  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 41), (NEW.id_copy, 42), (NEW.id_copy, 43), (NEW.id_copy, 44), (NEW.id_copy, 45), (NEW.id_copy, 46);
-
+/*
 CREATE OR REPLACE RULE actu_ciclos1 AS ON UPDATE TO profesores where NEW.id_curso_ciclo = 1   DO ALSO insert into cursos_ciclos (curso, id_tutor, id_ciclo) VALUES ();
 CREATE OR REPLACE RULE actu_ciclos2 AS ON UPDATE TO profesores where NEW.id_curso_ciclo = 2   DO ALSO insert into cursos_ciclos (id_alumno, id_modulo) VALUES (NEW.id_copy, 7), (NEW.id_copy, 8), (NEW.id_copy, 9), (NEW.id_copy, 10), (NEW.id_copy, 11);
 CREATE OR REPLACE RULE actu_ciclos3 AS ON UPDATE TO profesores where NEW.id_curso_ciclo = 3   DO ALSO insert into cursos_ciclos (id_alumno, id_modulo) VALUES (NEW.id_copy, 12), (NEW.id_copy, 13), (NEW.id_copy, 14), (NEW.id_copy, 15), (NEW.id_copy, 16), (NEW.id_copy, 17), (NEW.id_copy, 18);
@@ -106,7 +200,7 @@ CREATE OR REPLACE RULE actu_ciclos5 AS ON UPDATE TO profesores where NEW.id_curs
 CREATE OR REPLACE RULE actu_ciclos6 AS ON UPDATE TO profesores where NEW.id_curso_ciclo = 14  DO ALSO insert into cursos_ciclos (id_alumno, id_modulo) VALUES (NEW.id_copy, 30), (NEW.id_copy, 31), (NEW.id_copy, 32), (NEW.id_copy, 33), (NEW.id_copy, 34);
 CREATE OR REPLACE RULE actu_ciclos7 AS ON UPDATE TO profesores where NEW.id_curso_ciclo = 15  DO ALSO insert into cursos_ciclos (id_alumno, id_modulo) VALUES (NEW.id_copy, 35), (NEW.id_copy, 36), (NEW.id_copy, 37), (NEW.id_copy, 38), (NEW.id_copy, 39), (NEW.id_copy, 40);
 CREATE OR REPLACE RULE actu_ciclos8 AS ON UPDATE TO profesores where NEW.id_curso_ciclo = 16  DO ALSO insert into cursos_ciclos (id_alumno, id_modulo) VALUES (NEW.id_copy, 41), (NEW.id_copy, 42), (NEW.id_copy, 43), (NEW.id_copy, 44), (NEW.id_copy, 45), (NEW.id_copy, 46);
-
+*/
 
 INSERT INTO ciclos (nombre, siglas, tipo) VALUES ('Desarrollo de Aplicaciones Web', 'DAW', 'GS');
 INSERT INTO ciclos (nombre, siglas, tipo) VALUES ('Administración de sistemas informáticos en red', 'ASIR', 'GS');
