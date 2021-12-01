@@ -67,7 +67,7 @@ CREATE TABLE modulos(
     nombre VARCHAR(60),
     siglas VARCHAR(3),
     id_curso_ciclo int REFERENCES cursos_ciclos(id) ON DELETE CASCADE ON UPDATE CASCADE,
-    id_profesor int REFERENCES profesores(id_profesor) ON DELETE CASCADE ON UPDATE CASCADE
+    id_prof int REFERENCES profesores(id_profesor) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 CREATE TABLE alumnos(
@@ -121,7 +121,7 @@ CREATE TABLE log_modulos (
     nombre varchar(80),
     siglas VARCHAR(3),
     id_curso_ciclo int,
-    id_profesor int
+    id_prof int
 );
 
 /* ==================================== RULES PARA LOGS DE ALUMNOS ==================================== */
@@ -161,18 +161,18 @@ VALUES ('DELETE',OLD.id_profesor,OLD.nombre,OLD.apellido1,OLD.apellido2,OLD.fech
 /* ==================================== RULES PARA LOGS DE MODULOS ==================================== */
 CREATE OR REPLACE RULE insert_mod_zonzamas AS 
 ON INSERT TO modulos DO ALSO 
-INSERT INTO log_modulos (accion,nombre,siglas,id_curso_ciclo,id_profesor) 
-VALUES ('INSERT',NEW.nombre,NEW.siglas,NEW.id_curso_ciclo,NEW.id_profesor);
+INSERT INTO log_modulos (accion,nombre,siglas,id_curso_ciclo,id_prof)
+VALUES ('INSERT',NEW.nombre,NEW.siglas,NEW.id_curso_ciclo,NEW.id_prof);
 
 CREATE OR REPLACE RULE update_mod_zonzamas AS 
 ON UPDATE TO modulos DO ALSO 
-INSERT INTO log_modulos (accion,nombre,siglas,id_curso_ciclo, id_profesor) 
-VALUES ('UPDATE',NEW.nombre,NEW.siglas,NEW.id_curso_ciclo,NEW.id_profesor);
+INSERT INTO log_modulos (accion,nombre,siglas,id_curso_ciclo, id_prof) 
+VALUES ('UPDATE',NEW.nombre,NEW.siglas,NEW.id_curso_ciclo,NEW.id_prof);
 
 CREATE OR REPLACE RULE delete_mod_zonzamas AS 
 ON DELETE TO modulos DO ALSO 
-INSERT INTO log_modulos (accion,nombre,siglas, id_curso_ciclo, id_profesor) 
-VALUES ('DELETE',OLD.nombre,OLD.siglas,OLD.id_curso_ciclo,OLD.id_profesor);
+INSERT INTO log_modulos (accion,nombre,siglas, id_curso_ciclo, id_prof) 
+VALUES ('DELETE',OLD.nombre,OLD.siglas,OLD.id_curso_ciclo,OLD.id_prof);
 /* ======================================================================================================= */
 
 CREATE OR REPLACE RULE actu_cursos_ciclos1 AS ON UPDATE TO alumnos where NEW.id_curso_ciclo = 1  DO ALSO insert into alumnos_modulos (id_alumno, id_modulo) VALUES (NEW.id_copy, 1), (NEW.id_copy, 2), (NEW.id_copy, 3), (NEW.id_copy, 4), (NEW.id_copy, 5), (NEW.id_copy, 6);
