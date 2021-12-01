@@ -470,12 +470,12 @@ DROP RULE update_alum on alumnos;
 DROP RULE delete_alum on alumnos;
 
 DROP RULE insert_prof on profesores;
-DROP RULE insert_prof on profesores;
-DROP RULE insert_prof on profesores;
+DROP RULE update_prof on profesores;
+DROP RULE delete_prof on profesores;
 
 DROP RULE insert_mod on modulos;
-DROP RULE insert_mod on modulos;
-DROP RULE insert_mod on modulos;
+DROP RULE update_mod on modulos;
+DROP RULE delete_mod on modulos;
 /* ==================================== RULES PARA LOGS DE ALUMNOS ==================================== */
 CREATE OR REPLACE RULE insert_alum AS 
 ON INSERT TO alumnos DO ALSO 
