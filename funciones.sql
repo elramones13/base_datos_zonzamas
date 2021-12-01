@@ -1,3 +1,5 @@
+drop function contador_alumnos;
+
 do
     'declare
         n_alumnos integer;
