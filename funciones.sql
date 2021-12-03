@@ -1,5 +1,4 @@
-drop function contador_alumnos;
-drop function contador_alumnos2;
+
 
 /* ================================ PROCESOS ================================ */
 do
@@ -53,6 +52,9 @@ $$;
 /* =========================================================================== */
 
 /* ================================ FUNCIONES ================================ */
+drop function contador_alumnos;
+drop function contador_alumnos2;
+
 
 CREATE OR REPLACE FUNCTION contador_alumnos(modulo int, sexo_sel varchar(1), tipo_sel varchar(2), pais_sel varchar(2)) 
 returns int
@@ -99,11 +101,11 @@ from alumnos_modulos am
     ,ciclos c 
 where am.id_alumno=a.id_alumnos 
     and am.id_modulo=modulo 
-    and a.sexo=''sexo_sel''
+    and a.sexo=sexo_sel
     and a.id_curso_ciclo=cc.id_ciclo 
     and cc.id_ciclo=c.id 
-    and c.tipo=''tipo_sel'' 
-    and a.pais=''pais_sel'' ;
+    and c.tipo=tipo_sel
+    and a.pais=pais_sel ;
 if n_alumnos <= 0 then
     raise notice ''No existe ningún alumno'';
 else
@@ -112,6 +114,8 @@ end if;
 return n_alumnos;
 end;';
 
+select contador_alumnos(30,'F','GS','PT');
+select contador_alumnos2(30,'F','GS','PT');
 /* ========================================================================== */
 
 
