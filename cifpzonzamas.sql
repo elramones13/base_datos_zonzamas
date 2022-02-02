@@ -1,25 +1,11 @@
-DROP RULE actu_cursos_ciclos1 on alumnos;
-DROP RULE actu_cursos_ciclos2 on alumnos;
-DROP RULE actu_cursos_ciclos3 on alumnos;
-DROP RULE actu_cursos_ciclos4 on alumnos;
-DROP RULE actu_cursos_ciclos5 on alumnos;
-DROP RULE actu_cursos_ciclos6 on alumnos;
-DROP RULE actu_cursos_ciclos7 on alumnos;
-DROP RULE actu_cursos_ciclos8 on alumnos;
-
-DROP RULE insert_alum on alumnos;
-DROP RULE update_alum on alumnos;
-DROP RULE delete_alum on alumnos;
-
-DROP RULE insert_prof on profesores;
-DROP RULE update_prof on profesores;
-DROP RULE delete_prof on profesores;
-
-DROP RULE insert_mod on modulos;
-DROP RULE update_mod on modulos;
-DROP RULE delete_mod on modulos;
-
-
+DROP RULE insert_alum_modulo_1 on alumnos;
+DROP RULE insert_alum_modulo_2 on alumnos;
+DROP RULE insert_alum_modulo_3 on alumnos;
+DROP RULE insert_alum_modulo_4 on alumnos;
+DROP RULE insert_alum_modulo_5 on alumnos;
+DROP RULE insert_alum_modulo_6 on alumnos;
+DROP RULE insert_alum_modulo_7 on alumnos;
+DROP RULE insert_alum_modulo_8 on alumnos;
 
 DROP TABLE alumnos_modulos CASCADE;
 DROP TABLE modulos CASCADE;
