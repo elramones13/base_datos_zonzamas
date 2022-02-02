@@ -72,6 +72,28 @@ CREATE TABLE alumnos_modulos(
     id_modulo int references modulos(id)  on delete cascade on update cascade
 );
 
+CREATE TABLE alumnos_modulos_historicos
+(
+    id serial primary key,
+    id_alumno int,
+    id_modulo int
+);
+
+CREATE TABLE alumnos_historicos
+(
+    id serial primary key,
+    nombre varchar(80),
+    apellido1 varchar(80),
+    apellido2 varchar(80),
+    fecha_nacimiento date,
+    email varchar(80),
+    telefono bigint,
+    sexo char,
+    pais varchar(80),
+    repetidor bool,
+    id_curso_ciclo int,
+    curso_escolar int
+);
 
 CREATE OR REPLACE RULE insert_alum_modulo_1 AS ON INSERT TO alumnos WHERE id_curso_ciclo = 1 DO ALSO INSERT INTO alumnos_modulos (id_alumno, id_modulo) VALUES (currval('alumnos_id_seq'),1),  (currval('alumnos_id_seq'),2),  (currval('alumnos_id_seq'),3),  (currval('alumnos_id_seq'),4),  (currval('alumnos_id_seq'),5), (currval('alumnos_id_seq'),6);
 CREATE OR REPLACE RULE insert_alum_modulo_2 AS ON INSERT TO alumnos WHERE id_curso_ciclo = 2 DO ALSO INSERT INTO alumnos_modulos (id_alumno, id_modulo) VALUES (currval('alumnos_id_seq'),7),  (currval('alumnos_id_seq'),8),  (currval('alumnos_id_seq'),9),  (currval('alumnos_id_seq'),10), (currval('alumnos_id_seq'),11);
